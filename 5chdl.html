@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>5chの画像保存 by Neko288</title>
+<meta name="Description" content="[Python]SlideShow" />
+<meta name="Keywords" content="スライドショー, Python,tkinter" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてね。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+      <article>
+        <h2>5ch画像一括DL</h2><p class='time'>2021.11.08</p>
+        <a href="program/gui.Hozon5ch.pyw"><span class='dl-page'>5ch画像保存をダウンロード</span></a>
+        <br>
+        <label class="open" for="pop-up">5ch画像保存(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/SlideShow.exe"><span class='dl-page'>理解して5ch画像保存(exe)をダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>これは何？</h4>
+        <p>5ch(匿名掲示板)のスレにある画像をすべて保存します。</p>
+        <h4>プログラムの画面</h4>
+        <p>プログラムを開くと、この画面が開きます。</p>
+        <img src="images/5chdl-url.png" style="margin: 10px; width: 55%; height: 55%;" class="sumaho-img">
+        <p>ここでURLをペーストして</p>
+        <img src="images/5chdl-path.png" style="margin: 10px; width: 55%; height: 55%;" class="sumaho-img">
+        <p>ここで保存したいフォルダを指定して</p>
+        <p>保存するをクリックすれば、指定したURL(5ch)の画像をすべて保存します。</p>
+        <p>少し待つと</p>
+        <img src="images/5chdl-kanryo.png" style="margin: 10px; width: 20%; height: 20%;" class="sumaho-img">
+        <p>このポップアップが開きます。ポップアップの文字通り保存が完了しました。</p>
+        <p>本当に保存されたか確かめてみると</p>
+        <img src="images/5chdl-saveok.png" style="margin: 10px; width: 80%; height: 80%;" class="sumaho-img">
+        <p>ちゃんと全部保存されてます!!</p>
+
+
+        <h4>なんで作ったの？</h4>
+        <p>5chで貼られる画像はimgurという外部の画像共有サービスが使われていることが多いのですが、外部のサービスを使われると、私が以前作ったサイトの画像全部取得するプログラムが使えないので、5ch用を作りました。</p>
+        <h4>仕組み</h4>
+        <p>サイトのimgurのリンクをすべて取得して、そのimgurのリンクにある画像を保存します。</p>
+        <p>ちなみに、imgurというのは画像を共有するサービスです。イメージとしては画像版youtube</p>
+        <p>5chには画像を上げる機能がないので、みんなimgurを使って画像を上げます。</p>
+        <h4>詳細</h4>
+        <p>言語 : Python3(3.9.6)</p>
+        <p>使用ライブラリ : requests, os, BeautifulSoup(bs4), Tkinter </p>
+        <h4>Source Code</h4>
+        <pre><code>
+# coding: UTF-8
+import requests,os
+from tkinter import ttk
+from bs4 import BeautifulSoup
+import tkinter as tk,requests,os
+from tkinter import font
+from bs4 import BeautifulSoup
+from tkinter import filedialog
+
+
+
+win = tk.Tk()
+win.geometry("440x200")
+win.title("View image")
+win.configure(bg="#333333")
+
+label_welcom = tk.Label(
+win,
+font = ("游ゴシック", 20),
+text = 'Hozon5ch',
+fg = "white",
+bg='#333333')
+label_welcom.place(x = 150, y=0,)
+
+def get_folder():
+  global path
+  path = filedialog.askdirectory(initialdir ='C:')
+  entry_path.delete(0,tk.END)
+  entry_path.insert(tk.END,path)
+
+def new_win():
+  get_image()
+  global entry_path
+  global hozon_win
+  hozon_win = tk.Toplevel()
+  hozon_win.geometry("550x220")
+  hozon_win.configure(bg='#333333')
+
+  hozon_title = tk.Label(
+  hozon_win,
+  font = ("游ゴシック", 12),
+  text = title,
+  fg = "white",
+  bg='#333333')
+  hozon_title.place(x = 0, y=0,)
+
+  gazo_num = tk.Label(
+  hozon_win,
+  font = ("游ゴシック", 12),
+  text = '画像数 : '+ str(gazo_link_num),
+  fg = "white",
+  bg='#333333')
+  gazo_num.place(x = 30, y=20,)
+
+  #koko
+  entry_path = tk.Entry(hozon_win,width=60,bg="#5c5a5a",fg="white",bd=0,)
+  entry_path.insert(tk.END,"C:/")
+  entry_path.place(x = 10, y =60,height=20,)
+
+  button_hozon_win = tk.Button(hozon_win, text='ブラウズ',  width=7, fg="white",
+  bg='#5c5a5a',
+  command=lambda:get_folder(),)
+  button_hozon_win.place(x = 450, y = 55)
+  
+  button_hozon = tk.Button(hozon_win, text='保存する',width=20,height=2, fg="white",
+  bg='#5c5a5a',
+  command=lambda:get_image_2(),)
+  button_hozon.place(x = 200, y = 100)
+
+  button_hozon_win.mainloop()
+
+
+
+entry_URL = tk.Entry(width=60,bg="#5c5a5a",fg="white",bd=0,)
+entry_URL.insert(tk.END,"https://5ch.net/url")
+entry_URL.place(x = 10, y =50,)
+
+button_hozon_win = tk.Button(win, text='実行するぜ',  width=14, height=2, fg="white",
+  bg='#5c5a5a',
+  command=lambda:new_win(),)
+button_hozon_win.place(x = 10, y = 80)
+
+def get_image():
+  global title
+  global gazo_link_num
+  global get_image_2
+  res = requests.get(entry_URL.get())
+  soup = BeautifulSoup(res.content, "lxml")
+  title = soup.find('title').text
+  title = title.replace('\n', '')
+  img_link = []
+
+  print('保存しているサイト : '+title)
+
+  for link in soup.find_all('a', class_='image'):#画像のリンクを取得
+    link = link.get('href').replace('http://jump.5ch.net/?','')
+    img_link.append(link)
+  gazo_link_num= len(img_link)
+
+
+  def get_image_2():
+    try:
+      path
+    except NameError:
+      path = entry_path.get()
+
+    save_path = (path+'/'+title+'/')
+    if os.path.exists(save_path):
+      mouaru = tk.messagebox.askyesno(title="もう保存したっぽいよ", message="もうこのサイトは保存してるようです。上書きしますか？")
+      if mouaru==False:return
+    else:os.makedirs(save_path)
+
+
+    for link in img_link:#画像のリンクを取得
+      image_name = []
+      if link.endswith('.jpg'):
+        image_name
+          
+      elif link.endswith('.png'):
+        image_name
+          
+      elif link.endswith('.jpeg'):
+        image_name
+    #この段階ではまだ画像本体ではなく、画像リンク
+    print('Start saving')
+
+
+    for i, image in enumerate(img_link):
+      re = requests.get(image)
+      #画像はre.contentで取得可。
+      #ここで画像を取得。この下で名付け＆保存
+      i += 1
+      with open(save_path + title +  str(i) +'.'+ image.split('.')[-1], 'wb') as im:
+        im.write(re.content)
+        print("Saved : " + title + " | " +str(i) + " / " +str(len(img_link)))
+    tk.messagebox.showinfo(title="完了", message="保存完了したよ。")
+    print('--END--')
+
+
+win.mainloop()
+        </code></pre>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

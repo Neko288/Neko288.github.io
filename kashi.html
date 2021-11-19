@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>歌詞取得 by Neko288</title>
+<meta name="Description" content="[Python]歌詞取得プログラム" />
+<meta name="Keywords" content="歌詞,Python" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+      <article>
+        <h2>歌詞取得</h2>
+        <a href="program/GET_kashi.py"><span class='dl-page'>歌詞取得プログラムをダウンロード</span></a>
+        <br>
+        <label class="open" for="pop-up">歌詞取得プログラム(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/GET_kashi.exe"><span class='dl-page'>理解して歌詞取得プログラム(exe)をダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>なにができるの？</h4>
+        <p>曲名を入力すると、歌詞を表示します。</p>
+        <img src="images/kashi-teikoku.jpg.png" style="margin: 10px; width: 77%; height: 77%;">
+        <p>こんな感じの画面です。</p>
+        <h4>仕組みは？</h4>
+        <p>プチリリ(歌詞サイト)で曲名を検索して、そこから歌詞をとってくる。</p>
+        <h4>詳細</h4>
+        <p>言語 : Python3</p>
+        <p>使用ライブラリ : BeautifulSoup, requests, </p>
+        <h4>Source Code</h4>
+        <p></p>
+        <pre><code>
+import requests
+from bs4 import BeautifulSoup
+
+def get_kashi_all():
+    try:
+        get_kashi_all()
+    except AttributeError:
+        print('Error. 曲もしくは歌詞が存在しません。\n')
+    except:
+        gomi = '2'
+
+    want_song = (input('曲名 : '))#曲名
+    source_site = 'https://petitlyrics.com'
+
+    res = requests.get(source_site + '/search_lyrics?title=' + want_song)
+    soup_source = BeautifulSoup(res.content, "lxml")
+
+    lyrist_son = soup_source.find('span', class_ = 'lyrics-list-title') 
+    #classが書かれている欲しいリンクの子クラスを指定。
+
+
+    #!!!以下からは歌詞があるサイト
+    res_song =  requests.get(source_site + (lyrist_son.parent.get('href'))) #(lyrist_son.parent.get('href'))、ここで親要素を取得(href)
+    soup = BeautifulSoup(res_song.content, "lxml")
+
+    get_kashi = soup.find('canvas', id = 'lyrics') 
+    get_Artist = soup.select('div.pure-u-1:nth-child(1) > div:nth-child(1) > p:nth-child(1) > a:nth-child(2)')
+    for Artists in get_Artist:
+        in_art = (Artists.string)
+    print('アーティスト:' + in_art + '\n' + '歌詞:' + '\n' + get_kashi.text + '\n-----------------------------------\n')
+
+    input()
+
+get_kashi_all()
+
+while True:
+    get_kashi_all()
+        </code></pre>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

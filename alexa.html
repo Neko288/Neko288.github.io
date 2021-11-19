@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>Alexaランキング取得 by Neko288</title>
+<meta name="Description" content="説明文いれるお" />
+<meta name="Keywords" content="キーワード,キーワード,キーワード" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+      <article>
+        <h2>Alexaランキング取得</h2>
+        <a href="program/AUTO_alexa_ranking.py"><span class='dl-page'>Alexaランキング取得プログラムをダウンロード</span></a>
+        <br>
+        <label class="open" for="pop-up">Alexaランキング取得プログラム(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/AUTO_alexa_ranking.exe"><span class='dl-page'>理解してAlexaランキング取得(exe)をダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>Alexaランキングとは</h4>
+        <blockquote>
+          <p>ウェブサイトの利用状況に関するデータを集め、ウェブサイトがどれだけの人に<br>視聴されているかを調査している。alexa.comでは、ドメインへの1日当たりのアクセス数（トラフィック）や訪問者数、直帰率、世界および国内におけるランキングなどを確認できる。</p>
+          <footer>出典：<cite><a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B5%E3%83%BB%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88" target="_blank">Wikipedia アレクサ・インターネット より</a></cite></footer>
+        </blockquote>
+        <p>要するに、どれだけそのウェブサイトがどれだけアクセスされているかが大体わかるサイトだ。</p>
+        <h4>何ができる？</h4>
+        <p>サイトのURLを入力するとAlexaランキングを教えてくれる。alexa.comに行ってURLを入力するより早くて簡単。</p>
+        <h4>詳細</h4>
+        <p>言語 : Python3</p>
+        <p>使用ライブラリ : requests, BeautifulSoup, re</p>
+        <h4>Source Code(対話)</h4>
+        <pre><code>
+import requests
+from bs4 import BeautifulSoup
+import re
+import pyperclip
+
+#This is AUTO version
+
+def alexa_rank():
+    want_URL = (input('please URL : '))  
+
+    URL = ('https://www.alexa.com/siteinfo/' + want_URL)
+    res = requests.get(URL)
+    print('loading...')
+    soup = BeautifulSoup(res.text, "html.parser")
+
+    ranking = soup.find('p', class_='big data') #big dateというclassにランキング情報in
+    ranking = re.sub('[<p class="big data"> <span class="hash">#</span> </p>]', ' ', ranking.text) #ここでspanなど不要な情報を削除
+
+
+    print(want_URL + '\n    global rank #' + ranking.strip())#stripでスペースと改行を削除
+
+    Source = ('\nFor more :' + URL + '\n\n')
+    print(Source)
+
+while True:
+    alexa_rank()
+          </code></pre>
+          <h4>Source Code(直接入力)</h4>
+          <pre><code>
+import requests
+from bs4 import BeautifulSoup
+import re
+
+#This is Simple version
+
+want_URL = 'お好きなURL'  
+
+URL = ('https://www.alexa.com/siteinfo/' + want_URL)
+res = requests.get(URL)
+soup = BeautifulSoup(res.text, "html.parser")
+
+
+ranking = soup.find('p', class_ = 'big data') #big dateというclassにランキング情報が入っています
+ranking = re.sub('[<p class="big data"> <span class="hash">#</span> </p>]', ' ', ranking.text) #ここでspanなど不要な情報を削除
+
+print(want_URL + '\n    global rank #' + ranking.strip())  #stripでスペースと改行を削除
+
+
+input()
+            </code></pre>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

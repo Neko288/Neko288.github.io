@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>原神ダメージ計算 by Neko288</title>
+<meta name="Description" content="[Python] 原神ダメージ計算" />
+<meta name="Keywords" content="原神,genshin,ダメージ計算" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+      <nav class="menu">      
+        <script type="text/javascript">menu();</script>
+      </nav>
+      <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+      <div class="content">
+      <article>
+          <h2>原神ダメージ計算</h2>
+          <a href="program/genshin-dame-keisan.py"><span class='dl-page'>原神ダメージ計算をダウンロード</span></a>
+          <h4>原神とは？</h4>
+          <p>『原神』（げんしん、英: Genshin Impact）は、中国のゲーム会社、<br>miHoYoによって開発および運営されるオンラインゲーム。ジャンルはオープンワールドアクションRPG。</p>
+          <img src="images/genshin.jpg" style="margin: 10px; width: 60%; height: 60%;">
+          <p>こんな感じのゲーム</p>
+          <h4>原神ダメージ計算とは？</h4>
+          <p>文字通りゲーム内のダメージを計算するソフト。与えられるダメージを計算すると最適ステータスがわかり、<br>装備選びで最強の装備が何かわかる。</p>
+          <h4>できること</h4>
+          <p>1.ダメージ計算。ステータスをいくつか入力すると与えるダメージを計算します。</p>
+          <p>2.シールド吸収量計算。キャラクターのシールド値を計算します。</p>
+          <p>3.結晶シールド吸収量計算。岩元素キャラクターが使える結晶シールドのダメージ吸収量を計算します。</p>
+          </p> 
+          <h4>詳細</h4>
+          <p>言語 : Python</p>
+          <h4>Source Code</h4>
+          <pre><code>
+#ダメージ計算式の詳細https://wikiwiki.jp/genshinwiki/ダメージ計算式
+
+print('倍率などはすべて実数値で入力してください。  例(80% = 0.8')
+def all_keisan():
+    #与えるダメージ
+    def dmKeisan():
+        atk = float(input("攻撃力 = "))
+        bai = float(input("天賦ダメージ倍率 = "))
+        cridm = float(input("会心ダメ = "))
+        dmbuff = float(input("ダメージバフ = "))
+        dm = (atk * bai * (1 + cridm ) * (1 + dmbuff) )
+        kdm =(dm * 0.9)
+        #↑基本的に敵には耐性10%があるのでそれをマイナスしている。
+        print(kdm)
+
+
+    def shiKeisan():
+        #これはシールド計算式による。大抵はこれでいける。
+        deff = float(input("防御力 or HP or 熟知 = "))
+        bai_s = float(input("天賦倍率 = "))
+        deff_num = float(input("天賦数値 = "))
+        shi = (deff * bai_s + deff_num)
+        print(shi)
+
+    #結晶シールドのダメージ吸収量 kShi=結晶シールド
+    def KshieldKeisan():
+        genZyu = float(input("元素熟知 = "))
+        keShi = (1.6 *  25 * genZyu / (9 *(genZyu + 1400)))
+        print(keShi)
+
+
+    dosuru = float(input("何する？ \n\
+        ダメージ計算=1\n\
+        シールド吸収量計算(防御力参照)=2\n\
+        結晶シールド吸収量計算=3\n"))
+
+    if dosuru == (1):
+        dmKeisan()
+    elif dosuru == (2):
+        shiKeisan()
+    elif dosuru == (3):
+        KshieldKeisan()
+
+while True:
+    all_keisan()
+        </code></pre>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

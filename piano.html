@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>簡易ピアノ by Neko288</title>
+<meta name="Description" content="[Python]簡易ピアノ" />
+<meta name="Keywords" content="キーワード,キーワード,キーワード" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+    <div class="menu-wrap">
+        <nav class="menu">      
+          <script type="text/javascript">menu();</script>
+        </nav>
+        <button class="close-button" id="close-button">Close Menu</button>
+    </div>
+    <button class="menu-button" id="open-button">Open Menu</button>
+    <div class="content-wrap">
+        <div class="content">
+
+        <article>
+            <h2>簡易ピアノ</h2>
+            <a href="program/play_piano.pyw"><span class='dl-page'>簡易ピアノをダウンロード</span></a>
+            <br>
+            <label class="open" for="pop-up">簡易ピアノ(exe)をダウンロード</label>
+            <input type="checkbox" id="pop-up">
+            <div class="overlay">
+              <div class="window">
+                <label class="close" for="pop-up">×</label>
+                <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+                  セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+                  事前にセキュリティソフトを一時停止するか、<br>
+                  インストールするフォルダーを<br>
+                  ウイルス診断から除外してください。<br>
+                <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+                <a href="program/play_piano.exe"><span class='dl-page'>理解して簡易ピアノ(exe)をダウンロード</span></a>
+              </p>
+              </div>
+            </div>
+            <h4>簡易ピアノとは？</h4>
+            <p>簡易ピアノは名前の通り簡易的なピアノです。</p>
+            <img class='img-piano'src="images/piano-setumei.png">
+            <p>こんな感じの画面です</p>
+            <h4>何ができる？</h4>
+            <p>キーボードのA,S,D,F,G,H,J,Kのキーを推すとそれぞれ、ドレミファソラシドの音が出ます。</p>
+            <h4>詳細</h4>
+            <p>言語 : Python3</p>
+            <p>使用ライブラリ : tkinter, pygame, time</p>
+            <h4>Source Code(音源が別に必要。)</h4>
+            <a class='dl-page' href="https://maou.audio/category/se/se-inst/"><span>音源がある場所</span></a>
+            <pre><code>
+import tkinter 
+from tkinter import *
+import pygame
+import time
+
+win = tkinter.Tk()
+win.title("Keyboard_PIANO")
+win.geometry('800x400')
+
+#make welcome label
+label = tkinter.Label(
+    win,
+    font = ("Lucida Sans Unicode", 20),
+    text = "This is Keyboard piano." )
+label.place(x = 50, y = 20,)
+
+img = tkinter.PhotoImage(file = 'D:\Mori\kix.png')
+canvas = tkinter.Canvas(win, height=600, width=900)
+canvas.place(x=50, y=90)
+canvas.create_image(300, 100, image=img)
+
+buffer = StringVar()
+buffer.set('')
+
+def print_key(event):
+    key = event.keysym
+    if key == 'a':
+        doremi_in_def = r'C:XXX\DO.mp3'
+    if key == 's':
+        doremi_in_def = r'XXX\RE.mp3'
+    if key == 'd':
+        doremi_in_def = r'XXX\MI.mp3'
+    if key == 'f':
+        doremi_in_def = r'XXX\FA.mp3'
+    if key == 'g':
+        doremi_in_def = r'XXX\SO.mp3'
+    if key == 'h':
+        doremi_in_def = r'XXX\RA.mp3'
+    if key == 'j':
+        doremi_in_def = r'XXX\SHI.mp3'
+    if key == 'k':
+        doremi_in_def = r'XXX\DO(8).mp3'
+    pygame.mixer.init() #初期化
+    pygame.mixer.music.load(doremi_in_def) #読み込み
+    pygame.mixer.music.play(1) #再生
+
+#知らん。
+Label(win, text = '').pack()
+a = Label(win, textvariable = buffer)
+a.pack()
+a.bind('<Any-KeyPress>', print_key)
+a.focus_set()
+
+
+win.mainloop()
+        </code></pre>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>SlideShow by Neko288</title>
+<meta name="Description" content="[Python]SlideShow" />
+<meta name="Keywords" content="スライドショー, Python,tkinter" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてね。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+
+      <article>
+        <h2>SlideShow</h2><p class='time'>2021.10.15</p>
+        <a href="program/SlideShow.pyw"><span class='dl-page'>SlideShowをダウンロード</span></a>
+        <br>
+        <label class="open" for="pop-up">SlideShow(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/SlideShow.exe"><span class='dl-page'>理解してSlideShow(exe)をダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>これは何？</h4>
+        <p>スライドショーです。画像を流すあれです。</p>
+        <img src="images/slideshow.png" style="margin: 10px; width: 77%; height: 77%;">
+        <p>こんな感じで画像が流れていきます。</p>
+        <h4>なんで作ったの？</h4>
+        <p>Windowsデフォルトの写真アプリ(Photo)のスライドショーはたまに使えないことがあるので作りました。</p>
+        <h4>どうやって使うの？</h4>
+        <p>動画を作ったのでこれをどうぞ</p>
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <iframe src="https://player.vimeo.com/video/632259201?h=45b2919c59&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="slideshow.mp4"></iframe>
+        </div><script src="https://player.vimeo.com/api/player.js"></script>
+        <h4>便利かもしれない機能</h4>
+        <p>・スライドショーの画面で画像をクリックすると、画像をデフォルトイメージビュアーで開きます。これ、後でもう一回見たいって時に</ｐ>
+        <p>・Windowの名前が今開いている画像の名前になります。(スライドショーは全画面で使うからいらなくね？)</p>
+        <h4>ソースコードとかって読める？</h4>
+        <p>Githubで公開してます。</p>
+        <a href="https://github.com/Neko288/SlideShow" class="dl-page" target="_blank">Gtihubのリンク</a>
+        <p>まあ、下にもありますが。</p>
+        <p></p>
+        <h4>詳細</h4>
+        <p>言語 : Python3(3.9.6)</p>
+        <p>使用ライブラリ : os, math, tkinter, subprocess,PIL,ImageTK </p>
+        <h4>Source Code</h4>
+        <p></p>
+        <pre><code>
+import os,math,tkinter as tk,subprocess
+from PIL import Image, ImageTk
+
+
+#フォルダー指定ウィンドウ
+win = tk.Tk()
+win.geometry("400x150")
+win.title("View image")
+win.config(bg='#5FA0B6')
+
+#path指定するとこ
+entry_text = tk.Entry(width=70)
+entry_text.insert(tk.END,"C:/image/hoge/")
+entry_text.place(x = 1, y =1, )
+
+
+#画像切り替え時間
+label_key = tk.Label(
+    win,
+    font = ("851ゴチカクット", 13),
+    text = "切り替わるタイミング/秒",
+    bg='#5FA0B6',
+    fg='white')
+label_key.place(x = 1, y = 23,)
+
+timing_text = tk.Entry(win,width=5,relief="flat",)
+timing_text.insert(tk.END,'3')
+timing_text.place(x = 220, y =25, )
+
+timing = int(timing_text.get()) * 1000
+
+
+#グローバル用の情報とかglobal
+global slide_win
+global img
+global_num = 0
+
+def show_image():#画像をを次々流すよう。毎回ループする。
+  global canvas
+  global global_num
+  global img
+  #canvas.place_forget()#画像の残像が残るのを防ぐため。
+  global_num += 1
+  canvas.pack_forget()
+
+  dir_path = entry_text.get() + r'/' #画像があるパス。(entryからディレクトリを取得)
+  all_img = os.listdir(dir_path)#フォルダー内画像数
+
+  img = Image.open(dir_path + all_img[global_num])#画像のパス。(画像の場所も入れる。dir_pathは画像のあるフォルダー)
+
+  print(dir_path + all_img[global_num])
+
+  slide_win.title('image_Viewer for 「 ' + all_img[global_num] + ' 」')#ウィンドウのタイトル
+
+  w = img.width#画像の横のサイズを取得
+  h = img.height#画像の縦のサイズを取得
+  size = 1900#リサイズしたい画像サイズ(縦)
+  sizeh = 1080#リサイズしたい画像サイズ(横)
+  if w == h:
+    small_num_1 = (w / size)#画像をリサイズしたいサイズで割る。元の画像xsmall_num_1=リサイズしたい画像サイズ
+    w = math.ceil(w/small_num_1)
+    h = w
+  elif w >= size:
+    small_num_2 = (w / size)
+    w = math.ceil(w/small_num_2)
+    h = math.ceil(h/small_num_2)
+  elif w <= size:
+    small_num_3 = (size / w)
+    w = math.ceil(w*small_num_3)
+    h = math.ceil(h*small_num_3)
+  if h >= sizeh:
+    small_num_4 = (h / sizeh)
+    w = math.ceil(w/small_num_4)
+    h = math.ceil(h/small_num_4)
+
+  resize_img = img.resize((w,h))#リサイズしたいwとhを求めたので、そのサイズでリサイズする。
+
+  def click(self):
+    subprocess.Popen([entry_text.get() +'/'+all_img[global_num]], shell=True)
+
+  #画像を表示
+  img = ImageTk.PhotoImage(resize_img)
+  canvas = tk.Canvas(slide_win, width=w, height=h,bg="black")
+  canvas.pack(anchor='center')
+  canvas.create_image(0,0, anchor=tk.NW, image=img)
+  canvas.bind("<Button-1>", click)
+  print('画像を表示')
+
+  slide_win.after(timing, show_image)
+
+
+def slideshow():#画像を作るだけのウィンドウ(ようはwinみたいなもん)
+  global canvas
+  global slide_win
+  slide_win = tk.Toplevel()
+  slide_win.geometry("1920x1080")
+  slide_win.attributes('-fullscreen', True)
+  slide_win.configure(bg='black')
+  canvas = tk.Canvas(slide_win, width=0, height=0, bg='black',)
+  slide_win.after(100, show_image)#This is looooooooop
+
+  slide_win.mainloop()#ここで新しいウィンドウ(画像を流すウィンドウ)を終了
+
+
+#Next button(新しいウィンドウを開くボタン)
+next_image_button = tk.Button(win, text='Run ',  width=8, height=1, 
+  bg='white', 
+  font=("851ゴチカクット", 20,),
+  foreground='black',
+  activeforeground='black',
+  command=slideshow,)
+next_image_button.place(x = 120, y = 60)
+
+win.mainloop()
+          
+        </code></pre>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

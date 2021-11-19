@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>目守るタイマー by Neko288</title>
+<meta name="Description" content="[Python]目を守るタイマー" />
+<meta name="Keywords" content="目を守る,タイマー,ブルーライト,time,Python" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+
+      <article>
+        <h2>目守るタイマー</h2>
+        <a href="program/目を守るソフトだぜ！.zip"><span class='dl-page'>目守るタイマーをダウンロード(zip)</span></a>
+        <br>
+        <label class="open" for="pop-up">目守るタイマー(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/目を守るソフトだぜ！exe.zip"><span class='dl-page'>理解してexeをダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>目守るタイマーとは？</h4>
+        <p>簡単に言うとしゃべるタイマーです。</p>
+
+        <h4>概要</h4>
+        <p>画面をずっと見続けると目に悪い影響があります。<br>
+          これを軽減する為には目を休める必要があります。<br>
+          しかし、集中していると目を休めることなど忘れてしまします。<br>
+          そこでこのソフトです。<br>
+          このソフトを起動しておくと30分*おきにアナウンスが流れます。<br>
+          そのタイミングで、目を閉じたり遠くを見たり、PCから離れたりすると<br>
+          目を守ることができます。</p>
+          <br><p>*時間は変更できます。</p>
+
+        <h4>アナウンス音声の種類</h4>
+        <p>1.ビープ音(ピーとなります)</p>
+        <p>2.東北ずん子(Voiceroid)</p>
+        <p>3.きりたん(Voiceroid)</p>
+        <p>4.琴葉葵(Voiceroid)</p>
+        <p>5.琴葉茜(Voiceroid)</p>
+        <p>6.紲星あかり(Voiceroid)</p>
+        <blockquote><p>VOICEROIDとは、入力文字の読み上げをする音声合成ソフト。</p>	<cite lang="ja"><a href="https://dic.pixiv.net/a/VOICEROID" target="_blank" rel="nofollow">--VOICEROID (ぼいすろいど)とは【ピクシブ百科事典】から引用</a></cite></blockquote>
+        <h4>詳細</h4>
+        <p>言語 : Python3</p>
+        <p>使用ライブラリ : time, winsound, playsound</p>
+        <h4>製作感想</h4>
+        <p>シンプルですが、割と使えます。</p>
+        <h4>Source Code</h4>
+        <p>音声の別途ダウンロードが必要です。zipでダウンロードしたなら大丈夫です。</p>
+        <pre><code>
+#coding:utf-8
+import time
+import winsound
+from playsound import playsound
+
+path = (r'C:/any/Python-P/me_mamoru')#このファイルのパス(zip解凍後、フォルダーをいじってない場合)
+
+dore_sound = input('アナウンスの声(音)を変更できます。どれにしますか？\n1.ビープ音\n2.東北ずん子(Voiceroid)\n3.きりたん(Voiceroid)\n\
+4.琴葉葵(Voiceroid)\n5.琴葉茜(Voiceroid)\n6.紲星あかり(Voiceroid)\n>>>')
+
+def beep():
+  while True:
+    print('START')
+    time.sleep(600)#10m
+    print('10分経過')
+    time.sleep(600)#10m
+    print('20分経過')
+    time.sleep(600)#10m
+    print('30分経過\n')
+    winsound.Beep(523, 1000) 
+
+  
+if dore_sound == '1':
+  beep()
+elif dore_sound =='2':
+  sound_dir = (path + r'/voice/zunko.mp3')
+elif dore_sound =='3':
+  sound_dir = (path + r'/voice/kiri.mp3')
+elif dore_sound =='4':
+  sound_dir = (path + r'/voice/akane.mp3')
+elif dore_sound =='5':
+  sound_dir = (path + r'/voice/aoi_.mp3')
+elif dore_sound =='6':
+  sound_dir = (path + r'/voice/akari.mp3')
+else:
+  print('1,2,3,4,5,6を入れて')
+
+while True:
+  print('START')
+  time.sleep(600)#10m
+  print('10分経過')
+  time.sleep(600)#10m
+  print('20分経過')
+  time.sleep(600)#10m
+  print('30分経過\n')
+  playsound(sound_dir)
+
+        </code></pre>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>

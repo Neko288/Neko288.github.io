@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ランダム名前生成 by Neko288</title>
+<meta name="Description" content="説明入れお" />
+<meta name="Keywords" content="キーワード,キーワード,キーワード" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="menu.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてne。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+      <article>
+        <h2>ランダム名前生成</h2>
+        <a href="program/please_name!.py"><span class='dl-page'>ランダム名前生成をダウンロード</span></a>
+        <br>
+        <label class="open" for="pop-up">ランダム名前生成(exe)をダウンロード</label>
+        <input type="checkbox" id="pop-up">
+        <div class="overlay">
+          <div class="window">
+            <label class="close" for="pop-up">×</label>
+            <p class="text" style="text-align: center;">.exe形式のファイルをダウンロードすると<br>
+              セキュリティソフトがウイルスと誤認して<br>強制削除してしまいます。<br>
+              事前にセキュリティソフトを一時停止するか、<br>
+              インストールするフォルダーを<br>
+              ウイルス診断から除外してください。<br>
+            <a href="https://softantenna.com/wp/tips/windows-defender-exemptions/" class="dl-page" target="_blank">フォルダーをセキュリティソフトから除外する方法</span></a>
+            <a href="program/please_name!.exe"><span class='dl-page'>理解してランダム名前生成(exe)をダウンロード</span></a>
+          </p>
+          </div>
+        </div>
+        <h4>なにができるの？</h4>
+        <p>ランダムに名前を生成できます。デフォルトではローマ字3文字の文を生成します。(例: liz や poz)</p>
+        <p>コードを変えれば、日本語を生成したり長文を生成したりもできます。</p>
+        <h4>仕組みは？</h4>
+        <p>数をランダムに生成して、その数に対応する文字を表示する。</p>
+        <h4>活用方法</h4>
+        <p>出力する文字の数を変更すれば、毎回考えるのが面倒なパスワードも生成してくれます。</p>
+        <h4>詳細</h4>
+        <p>言語 : Python3</p>
+        <p>使用ライブラリ : random</p>
+        <h4>Source Code</h4>
+        <pre><code>
+import random
+
+def hontai():
+  random_abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  num = ' 3 ' #名前を何文字にするか
+  random_name = random.choices(random_abc, k=int(num)) #文字列をランダムに選択するンゴ
+  random_name = ''.join(random_name) #リストを横に並べるンゴ(文章にする)
+  print(random_name)
+  input()
+while True:
+  hontai()
+        </code></pre>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>
