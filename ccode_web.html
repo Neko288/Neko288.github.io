@@ -30,6 +30,7 @@
       <article>
         <h2>CCode web</h2><p class='time'>2021.11.23</p>
         <h3><a href="https://neko288.github.io/ccode-javascript/" target="_blank" style="font-size: 0.7em;">CCode webにアクセス</a></h3>
+        
         <h4>これは何？</h4>
         <p>暗号を作れるアプリ、CCodeのウェブ版です。</p>
         <a href="ccode.html" target="_blank"><アプリ版のページへ></a>
@@ -55,8 +56,6 @@
         <img src="images/CCode/seikou.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
         <p id="sikumi">成功です。</p>
 
-
-
         <h4>どういう仕組み？</h4>
         <p>コンピュータは文字を文字として理解できないので、文字を数字として扱います。</p>
         <p>これを利用して暗号を作ります。</p>
@@ -69,10 +68,29 @@
           すると「は」が「リ」になります。このようにして暗号を作ります。</p>
         <p>解読するときは逆のこと(引き算)をします。</p>
         <br>
+
+        <h4>暗号が突破(解読)される可能性は？</h4>
+        <p>この暗号は単一換字式暗号と呼ばれる暗号なので、解読される可能性はあります。</p>
+        <blockquote cite="https://ja.wikipedia.org/wiki/%E5%8D%98%E4%B8%80%E6%8F%9B%E5%AD%97%E5%BC%8F%E6%9A%97%E5%8F%B7">
+          <p>単一換字式暗号（たんいつかえじしきあんごう、Simple substitution cipher）<br>
+
+            暗号文の文字が常に同じ文字に変換されるような暗号のこと。例えば、平文の“d”が、暗号文で必ず“a”になるならば、それは単一換字式暗号である。<br>
+            
+            解読法<br>
+            単一換字式暗号の解読には頻度分析が有効である。</p>
+          引用元：<cite><a href="https://ja.wikipedia.org/wiki/%E5%8D%98%E4%B8%80%E6%8F%9B%E5%AD%97%E5%BC%8F%E6%9A%97%E5%8F%B7">Wikipediaより</a></cite>
+          </blockquote>
+        <p>Wikipediaさんにあるように、解読することは不可能ではありません。ですが頻度分析による解読なので利用できるのは長文だけです。</p>
+        <p>頻度分析というのは、文章の中での文字の出現頻度を調べて暗号を解読する方法です。一般的な英文なら「etaoinshrdlu」の順に文字が多く含まれているので、
+        暗号化した分の中で一番多く使われている文字をeと仮定することができます。このようにしてあるい程度解読することが可能なのです。</p>
+        <p>しかし、この方法で解読できるのは十分に文字の出現頻度がわかる長文だけです。つまり数十文字の文や単語なら解読されることはほぼありません。</p>
+        <a href='http://www7.plala.or.jp/dvorakjp/hinshutu.htm'>出現頻度について詳しく知りたい人はこのサイトがおすすめ</a>
+        
         <h4>概要</h4>
         <p>CCodeはもともとPythonというプログラミング言語で作られたものでしたが、Pythonで作ったものだとサイト上で使うことはできません。</p>
         <p>どうしても、サイトからCCodeを使いたかったのでJavascriptというサイト上でも使えるプログラミング言語に移植しました。 </p>
         <p>(正確にはサイト上というより、ブラウザ上動かせるフロントエンド言語です。)</p>
+        
         <h4>使用例</ｈ>
         <h1>テロ組織のLINEで</h1>
         <p class='LINE'><img src='images/CCode/LINE_image.png' width="400px" height="524.5px" alt='line'></p>
