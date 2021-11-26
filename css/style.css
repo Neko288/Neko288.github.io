@@ -19,6 +19,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea
   border: 0; 
 }
 
+
 html, body, .container, .content-wrap {
   overflow: hidden; 
   width: 100%; 
@@ -107,7 +108,7 @@ article {
 article h2 {
   margin-bottom: 40px; 
   font-weight: normal; 
-  font-size: 4em; 
+  font-size: 6em; 
   font-family: 'Carlito', '游ゴシック'; 
   text-align: center;
   border-bottom: 5px solid aqua;
@@ -148,7 +149,7 @@ article a {
 
 article a:hover {
   /*透明度設定*/
-  opacity: 0.8;
+  opacity: 2;
   filter: alpha(opacity=80);
   -moz-opacity: 0.8; 
   text-decoration: none;
@@ -192,6 +193,7 @@ article p{
   position: fixed; 
   text-decoration: none; 
 }
+
 
 .tagline-toppage{
   font-size: 150px;
@@ -266,7 +268,7 @@ code{
   border-bottom: 1.8px solid aqua;
 }
 
-/*ポップアップ用設定*/
+
 .open {
 	cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
   color: #ff0080;
@@ -274,10 +276,10 @@ code{
 
 }
 #pop-up {
-	display: none; /* label でコントロールするので input は非表示に */
+	display: none; 
 }
 .overlay {
-	display: none; /* input にチェックが入るまでは非表示に */
+	display: none; 
 }
 #pop-up:checked + .overlay {
 	display: block;
@@ -320,18 +322,15 @@ code{
 @media screen and (max-width: 768px) {
 
 .content-wrap {
-  width: 100%; /*幅指定(100%は画面横幅いっぱいに表示)*/
-  padding: 0 30px; /*ボックス内側の余白*/
-  position: relative; /*ボックスの配置方法(relativeは相対位置配置)*/
+  width: 100%; 
+  padding: 0 30px; 
+  position: relative; 
 }
 
 header {
-  margin: 70px auto 20px; /*ボックス外側の余白*/
+  margin: 70px auto 20px; 
 }
 
-header h1 {
-  font-size: 1.8em; /*フォントサイズ指定(emはフォントの高さを１とした相対指定)*/
-}
 
 
 .tagline-toppage{
@@ -342,8 +341,8 @@ header h1 {
 /*メインの内容*/
 
 article {
-  margin-top: 100px; /*ボックス外側上の余白*/
-  width: 100%; /*幅指定(100%は画面横幅いっぱいに表示)*/
+  margin-top: 100px; 
+  width: 100%; 
 }
 
 article p {
@@ -351,19 +350,19 @@ article p {
 }
 
 article h2 {
-  margin-bottom: 30px; /*ボックス外側下の余白*/
-  font-weight: normal; /*フォントの太さ指定(normalは標準)*/
-  font-size: 2em; /*フォントサイズ指定(emはフォントの高さを１とした相対指定)*/
-  text-align: center; /*行の水平方向の揃え方(centerは中央揃え)*/
+  margin-bottom: 30px; 
+  font-weight: normal; 
+  font-size: 5em; 
+  text-align: center; 
 }
 
 article li {
-  font-size: 1.2em; /*フォントサイズ指定(emはフォントの高さを１とした相対指定)*/
-  line-height: 30px; /*行の高さ指定(数値のみの場合はfont-sizeの倍数)*/
+  font-size: 1.2em; 
+  line-height: 30px; 
 }
 
 #nav {
-  display: none; /*要素の表示指定（noneはなし）*/
+  display: none; 
 }
 
 .menu{
