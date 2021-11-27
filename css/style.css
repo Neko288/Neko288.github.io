@@ -27,12 +27,10 @@ html, body, .container, .content-wrap {
 }
 
 body {
-  margin: 0; 
   background: #fff; 
-  font-family: 'Source Han Code JP','游ゴシック',Courier,'Noto Sans CJK',sans-serif;
-  font-weight: bold;
-  line-height: 1; 
-
+  font-family: 'UD Digi Kyokasho N-R',"Helvetica Neue", Arial,"Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+  color: #180813;
+  line-height: 1.6; 
 }
 
 ol, ul {
@@ -67,9 +65,8 @@ button:focus {
 }
 
 h5{
-  margin-top:20px;
-  margin: 25px;
-  font-size:1.5em;
+  margin: 15px;
+  font-size:1.2em;
   border-left: 3px solid aqua;
 }
 
@@ -155,10 +152,6 @@ article a:hover {
   text-decoration: none;
 }
 
-article p{
-  line-height: 30px;
-  font-size: 0.9em;
-}
 
 .video{
   width: 75%;
@@ -225,8 +218,6 @@ article p{
 .about-me-text{
   margin-top: 40px;
   line-height: 30px;
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .dl-page{
@@ -261,7 +252,7 @@ code{
 .box17{
   margin-top: 140px;
   text-align: center;
-  line-height: 30px;
+  line-height: 20px;
 }
 
 .box17 h2{
@@ -345,9 +336,6 @@ article {
   width: 100%; 
 }
 
-article p {
-  font-size: 0.8em;
-}
 
 article h2 {
   margin-bottom: 30px; 
@@ -373,8 +361,4 @@ img {
   max-width : 100% ;
   height : auto ;
 }
-.box17{
-  font-size: 10px;
-}
-
 }
