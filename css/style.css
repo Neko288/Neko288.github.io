@@ -313,6 +313,9 @@ blockquote{
   padding: 10px;
 }
 
+.icon-list{
+  font-family: 'Source Han Code JP','游ゴシック',Courier,'Noto Sans CJK',sans-serif;;
+}
 
 /*レスポンシブ設定*/
 
