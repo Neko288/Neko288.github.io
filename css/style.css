@@ -308,6 +308,12 @@ code{
 	font-size: 20px;
 }
 
+blockquote{
+  background-color:#E3EAF0;
+  padding: 10px;
+}
+
+
 /*レスポンシブ設定*/
 
 @media screen and (max-width: 768px) {
