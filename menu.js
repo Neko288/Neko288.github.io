@@ -11,7 +11,7 @@ function menu(){
   html += '<a href="slideshow.html"><span>SlideShow</span></a>';
   html += '<a href="5chdl.html"><span>5ch画像一括DL</span></a>';
   html += '<a href="piano.html"><span>簡易ピアノ</span></a>';
-  html += '<a href="steam.html"><span>Steamフリープレイ</span></a>';
+  html += '<a href="steam.html"><span>GetSteamFreeplay</span></a>';
   html += '<a href="alexa.html"><span>Alexaランキング取得</span></a>';
   html += '<a href="genshin-dame.html"><span>原神ダメージ計算</span></a>';
   html += '<a href="card.html"><span>タロットカード占い</span></a>';

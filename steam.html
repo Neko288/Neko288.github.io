@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
-<title>Steamフリープレイ by Neko288</title>
+<title>GetFreeplay by Neko288</title>
 <meta name="Description" content="[steam]フリーゲームを毎週取得" />
 <meta name="Keywords" content="Python,スクレイピング,Steam" />
 <link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
@@ -29,12 +29,12 @@
     <div class="content">
 
       <article>
-        <h2>Steamフリープレイ取得</h2>
-        <a href="program/get_free_game.py"><span  class='dl-page'>Steamフリープレイ取得をダウンロード</span></a>
-        <h4>Steamフリープレイとは？</h4>
+        <h2>GetFreeplay</h2>
+        <a href="program/get_free_game.py"><span  class='dl-page'>GetFreeplayをダウンロード</span></a>
+        <h4>GetFreeplayとは？</h4>
         <p>Steamというのは、主にPCゲームを取り扱うオンラインゲームストアのこと。イメージとしてはPCゲーム版のAppstoreやGoogleplaystore。</p>
         <p>Steamでは有料販売されているゲームを期間限定で無料プレイできることがある。<br>週末に無料プレイ可能になると「Free Weekend」と呼ばれるがその開始時期や期間は様々。</p>
-        <h4>Steamフリープレイ取得ができること</h4>
+        <h4>GetFreeplayができること</h4>
         <p>起動するだけで、現在フリープレイ対象のゲームを表示します。</p>
         <h4>なぜ作った？</h4>
         <p>やりたかったゲームのフリープレイがあるってことを、フリープレイ期間終了2時間前に知ったから。</p>
@@ -54,22 +54,9 @@ soup = BeautifulSoup(res.text, "html.parser")
 
 free_game = soup.find('span', id = 'toc1') 
 free_game2 = soup.find('span', id = 'toc2')
-"""
-free_game3 = soup.find('span', id = 'toc3')
-free_game4 = soup.find('span', id = 'toc4')
-free_game5 = soup.find('span', id = 'toc5')
-free_game6 = soup.find('span', id = 'toc6')
-free_game7 = soup.find('span', id = 'toc7')
-"""
 
 f = str(free_game.get_text()) 
 f2 = str(free_game2.get_text())
-"""
-f3 = str(free_game3.get_text())
-f4 = str(free_game4.get_text())
-f5 = str(free_game5.get_text())
-f6 = str(free_game6.get_text())
-f7 = str(free_game7.get_text())"""
 print(f + '\n' + f2 + '\n情報が送れている場合などがあります。Enterを押すとページに飛べます')# + '\n' + f3 + '\n' + f4 + '\n' + f5 + '\n' + f6 + '\n' +f7
 
 URL__ = 'https://steamdb.info/upcoming/free/'
