@@ -159,8 +159,9 @@ article a:hover {
 }
 
 .new{
-  padding: 2px;
-  margin-right: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 5px;
   color: #ff0080;
   display: inline-block;
   border: 1px solid #ff0080;
