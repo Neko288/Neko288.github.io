@@ -239,6 +239,10 @@ code{
   font-family: "Source Han Code JP";
 }
 
+img{
+  margin: 30px;
+}
+
 .img-piano{
   width: 80%;
   height: 80%;
