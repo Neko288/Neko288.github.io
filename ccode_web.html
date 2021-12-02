@@ -30,11 +30,24 @@
       <article>
         <h2>CCode web</h2><p class='time'>2021.11.23</p>
         <h3><a href="https://neko288.github.io/ccode-javascript/" target="_blank" style="font-size: 0.7em;">CCode webにアクセス</a></h3>
-        
+
+        <div class='mokuzi'>
+          <ol>
+            <p class='mokuzi-title'>目次</p>
+            <li class='mokuzi-li'><a href="#use">使い方</a></li>
+            <li class='mokuzi-li'><a href="#sikumi">仕組み</a></li>
+            <li class='mokuzi-li'><a href="#kaidoku">暗号が解読される可能性</a></li>
+            <li class='mokuzi-li'><a href="#gaiyou">概要</a></li>
+            <li class='mokuzi-li'><a href="#siyourei">使用例</a></li>
+            <li class='mokuzi-li'><a href="#source">SourceCode</a></li>
+          </ol>
+        </div>
+
         <h4>これは何？</h4>
         <p>暗号を作れるアプリ、CCodeのウェブ版です。</p>
         <a href="ccode.html" target="_blank"><アプリ版のページへ></a>
-        <h4>使い方</h4>
+
+        <h4 id='use'>使い方</h4>
         <h5 >暗号をつくる</h5>
         <p><a href="https://neko288.github.io/ccode-javascript/">CCode webのページ</a>にアクセスします。</p>
         <p>「半角英数字でパスワードを入力」の横にある所に数字のパスワードを入力してください。文字だとエラーが起きます。</p>
@@ -56,7 +69,7 @@
         <img src="images/CCode/seikou.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
         <p id="sikumi">成功です。</p>
 
-        <h4>どういう仕組み？</h4>
+        <h4 id='sikumi'>どういう仕組み？</h4>
         <p>コンピュータは文字を文字として理解できないので、文字を数字として扱います。</p>
         <p>これを利用して暗号を作ります。</p>
         <p>入力された文字を数字にして、パスワードと足します。できた数字を再び文字に戻します。出来た文字が暗号になります。</p>
@@ -69,7 +82,7 @@
         <p>解読するときは逆のこと(引き算)をします。</p>
         <br>
 
-        <h4>暗号が突破(解読)される可能性は？</h4>
+        <h4 id='kaidoku'>暗号が突破(解読)される可能性は？</h4>
         <p>この暗号は単一換字式暗号と呼ばれる暗号なので、解読される可能性はあります。</p>
         <blockquote cite="https://ja.wikipedia.org/wiki/%E5%8D%98%E4%B8%80%E6%8F%9B%E5%AD%97%E5%BC%8F%E6%9A%97%E5%8F%B7">
           <p>単一換字式暗号（たんいつかえじしきあんごう、Simple substitution cipher）<br>
@@ -84,13 +97,13 @@
         <p>しかし、この方法で解読できるのは十分に文字の出現頻度がわかる長文だけです。つまり数十文字の文や単語なら解読されることはほぼありません。</p>
         <a href='http://www7.plala.or.jp/dvorakjp/hinshutu.htm'>出現頻度について詳しく知りたい人はこのサイトがおすすめ</a>
         
-        <h4>概要</h4>
+        <h4 id='gaiyou'>概要</h4>
         <p>CCodeはもともとPythonというプログラミング言語で作られたものでしたが、Pythonで作ったものだとサイト上で使うことはできません。</p>
         <p>どうしても、サイトからCCodeを使いたかったのでJavascriptというサイト上でも使えるプログラミング言語に移植しました。 </p>
         <p>(正確にはサイト上というより、ブラウザ上動かせるフロントエンド言語です。)</p><br>
         <p>ちなみに、現在スペースは暗号化されません。要望があったら連絡ください。</p>
         
-        <h4>使用例</h4>
+        <h4 id='siyourei'>使用例</h4>
         <h1>テロ組織のLINEで</h1>
         <p class='LINE'><img src='images/CCode/LINE_image.png' width="400px" height="524.5px" alt='line'></p>
         <p>上のようなやり取りがあったとします。このメッセージが警察に傍受されていたら計画はばれて失敗するでしょう。</p>
@@ -101,7 +114,7 @@
         <p>言語 : Javascript(最新)</p>
         <p>使用ライブラリ : None</p>
         <br>
-        <h4>Source Code</h4>
+        <h4 id='source'>Source Code</h4>
         <script src="https://gist.github.com/Neko288/9aca6f8ed5fcb50429049e9cc6bdd8c8.js"></script>
         </div>
       </article>

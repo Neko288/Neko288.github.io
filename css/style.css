@@ -322,6 +322,36 @@ blockquote{
   font-family: 'Source Han Code JP','游ゴシック',Courier,'Noto Sans CJK',sans-serif;;
 }
 
+
+
+.mokuzi {
+  width: 50%;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  font-size: 0.6em;
+  border-left:solid 3px aqua;
+  border-bottom:solid 3px aqua;
+  border-top:solid 3px #ff0080;
+  border-right:solid 3px #ff0080;
+}
+
+.mokuzi-title{
+  font-size: 4em;
+  color: #ff0080;
+}
+
+.mokuzi li{
+  line-height: 1.8;
+}
+
+.mokuzi a:hover{
+  color: #ff0080;
+  font-weight: bold;
+}
+
+
+
 /*レスポンシブ設定*/
 
 @media screen and (max-width: 768px) {
