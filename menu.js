@@ -2,7 +2,6 @@ function menu(){
   var html = "";
   html += '<div class="icon-list">';
   html += '<a href="index.html"><span>Home</span></a>';
-  html += '<a href="program.html"><span>[Program]</span></a>';
   html += '<a href="about-me.html"><span>About Me</span></a>';
   html += '<a href="bolg.html"><span>Blog</span></a>';
   html += '<a href="ccode.html"><span>CCode</span></a>';
