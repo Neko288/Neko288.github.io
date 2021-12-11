@@ -350,6 +350,9 @@ blockquote{
   font-weight: bold;
 }
 
+footer{
+  background-color: aqua;
+}
 
 
 /*レスポンシブ設定*/
