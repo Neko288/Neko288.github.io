@@ -3,10 +3,10 @@
  text-decoration: none;
 }
 .menu a:hover {
- color: aqua;
+ color: black;
  outline: none;
  font-size: 1.2em;
- background-color: #ff3399;
+ background-color: #d8d2c6;
 }
 /* Menu Button */
 .menu-button {

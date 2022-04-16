@@ -1,16 +1,11 @@
-@charset 'utf-8'; /*文字コード指定*/
+@charset 'utf-8'; 
+/*This css is second color thema*/
 
-
-.dark-mode{
-  position:fixed;top:10px;right:20px;
-  color: aqua;
-  padding: 10px;
-  border: 2px solid #ff0080;
-}
-
-.black{
-  background: black; 
-  color: white;
+:root{
+  --background-color : #1a2229;
+  --main_color : #d18a41;
+  --sub_color : #d8d2c6;
+  --text-color : white;
 }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td, img {
@@ -27,9 +22,9 @@ html, body, .container, .content-wrap {
 }
 
 body {
-  background: #fff; 
+  background: var(--background-color); 
   font-family: 'UD Digi Kyokasho N-R',"Helvetica Neue", Arial,"Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
-  color: #180813;
+  color: var(--text-color);
   line-height: 1.6; 
 }
 
@@ -38,7 +33,7 @@ ol, ul {
 }
 
 a{
-  color: aqua;
+  color: var(--main_color);
 }
 
 .container {
@@ -67,7 +62,7 @@ button:focus {
 h5{
   margin: 15px;
   font-size:1.2em;
-  border-left: 3px solid aqua;
+  border-left: 3px solid var(--main_color);
 }
 
 /*header*/
@@ -79,7 +74,7 @@ header {
 
 header h1,h2 {
   font-family: 'Carlito',;
-  color: aqua;
+  color: var(--main_color);
 }
 
 .toppage {
@@ -94,8 +89,8 @@ article {
 }
 
 .gazo-kako{
-  border-left: 6px solid aqua;
-  border-bottom: 2px solid #ff0080;
+  border-left: 6px solid var(--main_color);
+  border-bottom: 2px solid var(--sub_color);
 }
 .time{
   text-align: right;
@@ -108,7 +103,7 @@ article h2 {
   font-size: 6em; 
   font-family: 'Carlito', '游ゴシック'; 
   text-align: center;
-  border-bottom: 5px solid aqua;
+  border-bottom: 5px solid var(--main_color);
 }
 
 article h3 {
@@ -120,16 +115,16 @@ article h3 {
 }
 
 .ccode_site{
-  border-left: 6px solid aqua;
-  color: aqua;
+  border-left: 6px solid var(--main_color);
+  color: var(--main_color);
 }
 
 article h4 {
   margin-top: 50px;
   margin-bottom: 15px;
   font-size: 1.3em;
-  border-left: 5px solid #ff0080;
-  border-bottom: 1.8px solid aqua;
+  border-left: 5px solid var(--sub_color);
+  border-bottom: 1.8px solid var(--main_color);
   padding-bottom: 3px;
   padding-left: 10px;
 }
@@ -140,7 +135,7 @@ article li {
 }
 
 article a {
-  color: #333; 
+  color: var(--sub_color); 
 }
 
 article a:hover {
@@ -161,9 +156,13 @@ article a:hover {
   padding-left: 3px;
   padding-right: 3px;
   margin-right: 5px;
-  color: #ff0080;
+  color: var(--sub_color);
   display: inline-block;
-  border: 1px solid #ff0080;
+  border: 1px solid var(--sub_color);
+}
+
+.a_new:hover{
+  color: var(--main_color);
 }
 
 /*右側SNSのアニメーション*/
@@ -178,7 +177,7 @@ article a:hover {
 }
 
 #nav li a {
-  color: #333; 
+  color: var(--text_color); 
   display: block; 
   height: 80px; 
   line-height: 80px; 
@@ -221,7 +220,7 @@ article a:hover {
 }
 
 .dl-page{
-  color: #ff0080;
+  color: var(--sub_color);
   display: inline-block;
   margin-bottom: 20px;
   text-align: center;
@@ -259,13 +258,13 @@ img{
 }
 
 .box17 h2{
-  border-bottom: 1.8px solid aqua;
+  border-bottom: 1.8px solid var(--main_color);
 }
 
 
 .open {
 	cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
-  color: #ff0080;
+  color: var(--sub_color);
   margin-bottom: 22px;
 
 }
@@ -327,15 +326,15 @@ blockquote{
   margin: 2em 0;
   font-weight: bold;
   font-size: 0.6em;
-  border-left:solid 3px aqua;
-  border-bottom:solid 3px aqua;
-  border-top:solid 3px #ff0080;
-  border-right:solid 3px #ff0080;
+  border-left:solid 3px var(--main_color);
+  border-bottom:solid 3px var(--main_color);
+  border-top:solid 3px var(--sub_color);
+  border-right:solid 3px var(--sub_color);
 }
 
 .mokuzi-title{
   font-size: 4em;
-  color: #ff0080;
+  color: var(--sub_color);
 }
 
 .mokuzi li{
@@ -343,12 +342,12 @@ blockquote{
 }
 
 .mokuzi a:hover{
-  color: #ff0080;
+  color: var(--sub_color);
   font-weight: bold;
 }
 
 footer{
-  background-color: aqua;
+  background-color: var(--main_color);
 }
 
 

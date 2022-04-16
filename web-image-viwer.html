@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="css/menu_scroll.css" media="screen and (max-height:700px)">
+<title>WEB Image Viewer web by Neko288</title>
+<meta name="Description" content="[javascript]CCode web" />
+<meta name="Keywords" content="Javascript, Python,CCode" />
+<link rel='shortcut icon' href="images/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/menu_sideslide.css" />
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/footer.js"></script>
+</head>
+
+<body>
+<noscript>
+<p>※JavaScriptを有効にしてね。</p>
+</noscript>
+<div class="container">
+  <div class="menu-wrap">
+    <nav class="menu">      
+      <script type="text/javascript">menu();</script>
+    </nav>
+    <button class="close-button" id="close-button">Close Menu</button>
+  </div>
+  <button class="menu-button" id="open-button">Open Menu</button>
+  <div class="content-wrap">
+    <div class="content">
+      <article>
+        <h2>CCode web</h2><p class='time'>2022.1.27</p>
+
+        <h4>これは何？</h4>
+        <p>画像を一覧で表示できるアプリです。</p>
+        <a href="ccode.html" target="_blank"><アプリ版のページへ></a>
+
+        <h4 id='use'>使い方</h4>
+        <h5 >暗号をつくる</h5>
+        <p><a href="https://neko288.github.io/ccode-javascript/">CCode webのページ</a>にアクセスします。</p>
+        <p>「半角英数字でパスワードを入力」の横にある所に数字のパスワードを入力してください。文字だとエラーが起きます。</p>
+        <img src="images/CCode/index.png" style="margin: 10px; width: 30%; height: 30%;" class="sumaho-img">
+        <p>今回は、123をパスワードにします。</p>
+        <img src="images/CCode/pass.png" style="margin: 10px; width: 30%; height: 30%;" class="sumaho-img">
+        <p>パスワードを入力したら、暗号にしたい文章を入力してください。言語は何でも構いません。「مجهے کتے اچهے 」こんなんでも、「개가 좋아 」こんなんでもOKです。</p>
+        <img src="images/CCode/kumaPanda.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
+        <p>入力したら、青い文字で「暗号化」と書かれているボタンをクリックしてください。クリックすると暗号化結果(暗号)が表示されます。</p>
+        <img src="images/CCode/angou.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
+        <p>「莱苭タ爅リㅌㅮㄻ」これが暗号となります。</p>
+        <p>ちなみに、暗号は自動でコピーされます。暗号は普通に入力できるものでは無い場合が多いので、ペーストして利用することをおすすめします。</p>
+        <h5 style="margin-top: 2em;">解読する</h5>
+        <p>暗号化はできたので、解読していきます。</p>
+        <p>解読するには、暗号を作るときに使ったパスワードが必須になります。それがないと解読できません。</p>
+        <p>「解読したい文章を入力してください。」の下にある入力欄に暗号を入力してください。暗号を普通にキーボードで入力するのは至難の業なので、コピー&ペーストすることをおすすめします。</p>
+        <img src="images/CCode/kaidoku.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
+        <p>入力(ペースト)したら、青い文字で書かれている「解読」ボタンをクリックしてください。</p>
+        <img src="images/CCode/seikou.png" style="margin: 10px; width: 40%; height: 40%;" class="sumaho-img">
+        <p id="sikumi">成功です。</p>
+
+        <h4 id='sikumi'>どういう仕組み？</h4>
+        <p>コンピュータは文字を文字として理解できないので、文字を数字として扱います。</p>
+        <p>これを利用して暗号を作ります。</p>
+        <p>入力された文字を数字にして、パスワードと足します。できた数字を再び文字に戻します。出来た文字が暗号になります。</p>
+        <p>もっと詳しく言うと、文字をUnicode値にして(Unicode値は数字)、パスワード+Unicode値します。出来た数字を文字に戻しします。こうすれば暗号ができます。解読するときは、暗号をUnicode値(数字)に戻してパスワードを引きます。そうすると暗号を解読できます。</p><br>
+        <a href="https://wa3.i-3-i.info/word11422.html" target=”_blank”>Unicodeについての詳しい説明はこのサイトがわかりやすいです。</a><br>
+        <h5>例</h5>
+        <p>「はろー」の「は」は12399という数字になります。<br>
+          パスワードが123なら「12399+123」とします。<br>
+          すると「は」が「リ」になります。このようにして暗号を作ります。</p>
+        <p>解読するときは逆のこと(引き算)をします。</p>
+        <br>
+
+        <h4 id='kaidoku'>暗号が突破(解読)される可能性は？</h4>
+        <p>この暗号は単一換字式暗号と呼ばれる暗号なので、解読される可能性はあります。</p>
+        <blockquote cite="https://ja.wikipedia.org/wiki/%E5%8D%98%E4%B8%80%E6%8F%9B%E5%AD%97%E5%BC%8F%E6%9A%97%E5%8F%B7">
+          <p>単一換字式暗号（たんいつかえじしきあんごう、Simple substitution cipher）<br>
+            暗号文の文字が常に同じ文字に変換されるような暗号のこと。例えば、平文の“d”が、暗号文で必ず“a”になるならば、それは単一換字式暗号である。<br>
+            解読法<br>
+            単一換字式暗号の解読には頻度分析が有効である。</p>
+          引用元：<cite><a href="https://ja.wikipedia.org/wiki/%E5%8D%98%E4%B8%80%E6%8F%9B%E5%AD%97%E5%BC%8F%E6%9A%97%E5%8F%B7">Wikipediaより</a></cite>
+          </blockquote>
+        <p>Wikipediaさんにあるように、解読することは不可能ではありません。ですが頻度分析による解読なので利用できるのは長文だけです。</p>
+        <p>頻度分析というのは、文章の中での文字の出現頻度を調べて暗号を解読する方法です。一般的な英文なら「etaoinshrdlu」の順に文字が多く含まれることが多いので、
+        暗号化した分の中で一番多く使われている文字をeと仮定することができます。このようにしてあるい程度解読することが可能なのです。</p>
+        <p>しかし、この方法で解読できるのは十分に文字の出現頻度がわかる長文だけです。つまり数十文字の文や単語なら解読されることはほぼありません。</p>
+        <a href='http://www7.plala.or.jp/dvorakjp/hinshutu.htm'>出現頻度について詳しく知りたい人はこのサイトがおすすめ</a>
+        
+        <h4 id='gaiyou'>概要</h4>
+        <p>CCodeはもともとPythonというプログラミング言語で作られたものでしたが、Pythonで作ったものだとサイト上で使うことはできません。</p>
+        <p>どうしても、サイトからCCodeを使いたかったのでJavascriptというサイト上でも使えるプログラミング言語に移植しました。 </p>
+        <p>(正確にはサイト上というより、ブラウザ上動かせるフロントエンド言語です。)</p><br>
+        <p>ちなみに、現在スペースは暗号化されません。要望があったら連絡ください。</p>
+        
+        <h4 id='siyourei'>使用例</h4>
+        <h1>テロ組織のLINEで</h1>
+        <p class='LINE'><img src='images/CCode/LINE_image.png' width="400px" height="524.5px" alt='line'></p>
+        <p>上のようなやり取りがあったとします。このメッセージが警察に傍受されていたら計画はばれて失敗するでしょう。</p>
+        <p>こんなときに、CCodeを使えば下の画像のように暗号化してメッセージを送ることができるので誰かにに計画がバレル心配はありません。</p>
+        <p class='LINE'><img src='images/CCode/LINE_Code.png' width="400px" height="524.5px" alt='line.code'></p>
+        <p>もちろん、暗号を解読するためのカギを持っていれば暗号を解読できるので、テロ組織の二人はちゃんとメッセージを読めています。</p>
+        <h4>詳細</h4>
+        <p>言語 : Javascript(最新)</p>
+        <p>使用ライブラリ : None</p>
+        <br>
+        <h4 id='source'>Source Code</h4>
+        <script src="https://gist.github.com/Neko288/9aca6f8ed5fcb50429049e9cc6bdd8c8.js"></script>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+</script>
+</body>
+</html>
