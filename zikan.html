@@ -76,55 +76,7 @@
         <p>シンプルですが、割と使えます。</p>
         <h4>Source Code</h4>
         <p>音声の別途ダウンロードが必要です。zipでダウンロードしたなら大丈夫です。</p>
-        <pre><code>
-#coding:utf-8
-import time
-import winsound
-from playsound import playsound
-
-path = (r'C:/any/Python-P/me_mamoru')#このファイルのパス(zip解凍後、フォルダーをいじってない場合)
-
-dore_sound = input('アナウンスの声(音)を変更できます。どれにしますか？\n1.ビープ音\n2.東北ずん子(Voiceroid)\n3.きりたん(Voiceroid)\n\
-4.琴葉葵(Voiceroid)\n5.琴葉茜(Voiceroid)\n6.紲星あかり(Voiceroid)\n>>>')
-
-def beep():
-  while True:
-    print('START')
-    time.sleep(600)#10m
-    print('10分経過')
-    time.sleep(600)#10m
-    print('20分経過')
-    time.sleep(600)#10m
-    print('30分経過\n')
-    winsound.Beep(523, 1000) 
-
-  
-if dore_sound == '1':
-  beep()
-elif dore_sound =='2':
-  sound_dir = (path + r'/voice/zunko.mp3')
-elif dore_sound =='3':
-  sound_dir = (path + r'/voice/kiri.mp3')
-elif dore_sound =='4':
-  sound_dir = (path + r'/voice/akane.mp3')
-elif dore_sound =='5':
-  sound_dir = (path + r'/voice/aoi_.mp3')
-elif dore_sound =='6':
-  sound_dir = (path + r'/voice/akari.mp3')
-else:
-  print('1,2,3,4,5,6を入れて')
-
-while True:
-  print('START')
-  time.sleep(600)#10m
-  print('10分経過')
-  time.sleep(600)#10m
-  print('20分経過')
-  time.sleep(600)#10m
-  print('30分経過\n')
-  playsound(sound_dir)
-
-        </code></pre>
+        <script src="https://gist.github.com/Neko288/7eaf63da666c12a31421aff273aaaf4b.js"></script>
         </div>
       </article>
     </div>

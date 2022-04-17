@@ -59,57 +59,7 @@
         <p>言語 : Python3</p>
         <p>使用ライブラリ : requests, BeautifulSoup, re</p>
         <h4>Source Code(対話)</h4>
-        <pre><code>
-import requests
-from bs4 import BeautifulSoup
-import re
-import pyperclip
-
-#This is AUTO version
-
-def alexa_rank():
-    want_URL = (input('please URL : '))  
-
-    URL = ('https://www.alexa.com/siteinfo/' + want_URL)
-    res = requests.get(URL)
-    print('loading...')
-    soup = BeautifulSoup(res.text, "html.parser")
-
-    ranking = soup.find('p', class_='big data') #big dateというclassにランキング情報in
-    ranking = re.sub('[<p class="big data"> <span class="hash">#</span> </p>]', ' ', ranking.text) #ここでspanなど不要な情報を削除
-
-
-    print(want_URL + '\n    global rank #' + ranking.strip())#stripでスペースと改行を削除
-
-    Source = ('\nFor more :' + URL + '\n\n')
-    print(Source)
-
-while True:
-    alexa_rank()
-          </code></pre>
-          <h4>Source Code(直接入力)</h4>
-          <pre><code>
-import requests
-from bs4 import BeautifulSoup
-import re
-
-#This is Simple version
-
-want_URL = 'お好きなURL'  
-
-URL = ('https://www.alexa.com/siteinfo/' + want_URL)
-res = requests.get(URL)
-soup = BeautifulSoup(res.text, "html.parser")
-
-
-ranking = soup.find('p', class_ = 'big data') #big dateというclassにランキング情報が入っています
-ranking = re.sub('[<p class="big data"> <span class="hash">#</span> </p>]', ' ', ranking.text) #ここでspanなど不要な情報を削除
-
-print(want_URL + '\n    global rank #' + ranking.strip())  #stripでスペースと改行を削除
-
-
-input()
-            </code></pre>
+        <script src="https://gist.github.com/Neko288/ccf03c169c498f832a5d5e489b56bada.js"></script>
       </article>
     </div>
   </div>

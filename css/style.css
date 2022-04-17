@@ -313,7 +313,7 @@ img{
 }
 
 blockquote{
-  background-color:#E3EAF0;
+  background-color:var(--main_color);
   padding: 10px;
 }
 
