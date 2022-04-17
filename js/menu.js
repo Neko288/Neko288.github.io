@@ -6,6 +6,7 @@ function menu(){
   html += '<a href="bolg.html"><span>Blog</span></a>';
   html += '<a href="ccode.html"><span>CCode</span></a>';
   html += '<a href="ccode_web.html" class="a_new"><span><div class="new">NEW</div>CCode web</span></a>';
+  html += '<a href="web-image-viewer.html" class="a_new"><span><div class="new">NEW</div>Web ImgViewer</span></a>';
   html += '<a href="img_view.html"><span>画像ビューア</span></a>';
   html += '<a href="slideshow.html"><span>SlideShow</span></a>';
   html += '<a href="5chdl.html"><span>5ch画像一括DL</span></a>';
