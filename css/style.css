@@ -146,6 +146,9 @@ article a:hover {
   text-decoration: none;
 }
 
+.box17{
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
 
 .video{
   width: 75%;
@@ -156,9 +159,9 @@ article a:hover {
   padding-left: 3px;
   padding-right: 3px;
   margin-right: 5px;
-  color: var(--sub_color);
+  color: #ff0080;
   display: inline-block;
-  border: 1px solid var(--sub_color);
+  border: 1px solid #ff0080;
 }
 
 .a_new:hover{
