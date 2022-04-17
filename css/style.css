@@ -367,8 +367,8 @@ footer{
   background:
     linear-gradient(
       to right,
-      rgba(100, 200, 200, 1),
-      rgba(100, 200, 200, 1)
+      var(--main_color),
+      var(--main_color)
     ),
     linear-gradient(
       to right,
