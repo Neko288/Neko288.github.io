@@ -3,9 +3,16 @@
 
 :root{
   --background-color : #1a2229;
-  --main_color : #d18a41;
-  --sub_color : #d8d2c6;
+  --transparements-background-color : #1a22297c;
+  --main_color : #E6FF00;
+  --sub_color : #E6FF00;
   --text-color : white;
+}
+
+/*テキスト選択時*/
+::selection{
+  background-color : var(--main_color);
+  color: var(--background-color);
 }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td, img {
@@ -159,13 +166,9 @@ article a:hover {
   padding-left: 3px;
   padding-right: 3px;
   margin-right: 5px;
-  color: #ff0080;
-  display: inline-block;
-  border: 1px solid #ff0080;
-}
-
-.a_new:hover{
   color: var(--main_color);
+  display: inline-block;
+  border: 1px solid var(--main_color);
 }
 
 /*右側SNSのアニメーション*/
